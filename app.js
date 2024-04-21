@@ -15,8 +15,13 @@ if (leadFromLocalStorage) {
 }
 
 btnInput.addEventListener("click", () => {
-  myLeads.push(inputEl.value);
-  localStorage.setItem("links", JSON.stringify(myLeads));
+  let value = inputEl.value;
+  if (value === "") {
+    return;
+  } else {
+    myLeads.push(value);
+    localStorage.setItem("links", JSON.stringify(myLeads));
+  }
 
   renderLead(myLeads);
   inputEl.value = "";
