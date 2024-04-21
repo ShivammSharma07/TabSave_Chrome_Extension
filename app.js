@@ -1,12 +1,12 @@
+"use strict";
 const btnInput = document.querySelector("#input-btn");
+const deleteBtn = document.querySelector("#delete-btn");
 const inputEl = document.querySelector("#input-el");
 const ulElement = document.querySelector("#ul-el");
 
 let myLeads = [];
 
 const leadFromLocalStorage = JSON.parse(localStorage.getItem("links"));
-
-localStorage.clear();
 
 if (leadFromLocalStorage) {
   myLeads = leadFromLocalStorage;
@@ -22,6 +22,12 @@ btnInput.addEventListener("click", () => {
   // console.log("main value");
 
   inputEl.value = "";
+});
+
+deleteBtn.addEventListener("dblclick", () => {
+  localStorage.clear();
+  myLeads = [];
+  renderLead();
 });
 
 function renderLead() {
